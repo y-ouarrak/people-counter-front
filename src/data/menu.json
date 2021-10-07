@@ -1,0 +1,88 @@
+{
+  "data": [
+    {
+      "title": "Dashboard",
+      "icon": "home",
+      "type": "link",
+      "badgeType": "light-primary",
+      "active": false,
+      "path": "/dashboard/default"
+    },
+    {
+      "title": "Data analysis",
+      "icon": "bar-chart-2",
+      "type": "sub",
+      "badgeType": "light-secondary",
+      "active": false,
+      "children": [
+        {
+          "path": "/project/projectlist",
+          "title": "Project list",
+          "type": "link"
+        },
+        {
+          "path": "/project/create-project",
+          "title": "Create new",
+          "type": "link"
+        }
+      ]
+    },
+    {
+      "title": "Entrance and exit",
+      "icon": "log-out",
+      "type": "sub",
+      "badgeType": "light-secondary",
+      "active": false,
+      "children": [
+        {
+          "path": "/project/projectlist",
+          "title": "Project list",
+          "type": "link"
+        },
+        {
+          "path": "/project/create-project",
+          "title": "Create new",
+          "type": "link"
+        }
+      ]
+    },
+    {
+      "title": "Device management",
+      "icon": "server",
+      "type": "sub",
+      "badgeType": "light-secondary",
+      "active": false,
+      "children": [
+        {
+          "path": "/project/projectlist",
+          "title": "Project list",
+          "type": "link"
+        },
+        {
+          "path": "/project/create-project",
+          "title": "Create new",
+          "type": "link"
+        }
+      ]
+    },
+    {
+      "title": "User Settings",
+      "icon": "settings",
+      "type": "sub",
+      "badgeType": "light-secondary",
+      "active": false,
+      "children": [
+        {
+          "path": "/project/projectlist",
+          "title": "Project list",
+          "type": "link"
+        },
+        {
+          "path": "/project/create-project",
+          "title": "Create new",
+          "type": "link"
+        }
+      ]
+    }
+  ]
+}
