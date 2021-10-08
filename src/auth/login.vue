@@ -22,15 +22,17 @@
               </div>
               <div class="login-main">
                 <b-card no-body>
-                  <b-tabs pills vertical>
-                    <b-tab active>
-                      <template #title>
+                  <!-- <b-tabs pills vertical>
+                    <b-tab active> -->
+                      <!-- <template #title>
                         <img
                           src="../assets/images/login/firebase.svg"
                           id="firebase-tooltip"
                         />
                         <span>Firebase Login</span>
-                      </template>
+                      </template> -->
+                      <div class="card-body">
+
                       <b-card-text>
                         <form class="theme-form">
                           <h4>Sign in to account</h4>
@@ -93,35 +95,6 @@
                               Login
                             </button>
                           </div>
-                          <h6 class="text-muted mt-4 or">Or Sign in with</h6>
-                          <div class="social mt-4">
-                            <div class="btn-showcase">
-                              <a class="btn btn-light" @click="socialLogin">
-                                <i class="fa fa-google txt-linkedin"></i>
-                                Google
-                              </a>
-                              <a
-                                class="btn btn-light"
-                                @click="socialLoginTwitter"
-                              >
-                                <feather
-                                  type="twitter"
-                                  class="txt-twitter"
-                                ></feather
-                                >twitter</a
-                              >
-                              <a
-                                class="btn btn-light"
-                                @click="socialLoginFacebook"
-                              >
-                                <feather
-                                  type="facebook"
-                                  class="txt-fb"
-                                ></feather
-                                >facebook</a
-                              >
-                            </div>
-                          </div>
                           <p class="mt-4 mb-0">
                             Don't have account?
                             <router-link
@@ -134,109 +107,8 @@
                           </p>
                         </form>
                       </b-card-text>
-                    </b-tab>
-                    <b-tab>
-                      <template #title>
-                        <img src="../assets/images/login/auth0.svg" />
-                        <span>Auth0</span>
-                      </template>
-                      <b-card-text>
-                        <form class="theme-form">
-                          <img src="../assets/images/login/auth-img.svg" />
-                          <h4>Sign in to Auth0 account</h4>
-                          <p>
-                            Lorem Ipsum is simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy.
-                          </p>
-                          <div class="form-group mt-3 mb-0">
-                            <button
-                              @click="login"
-                              class="btn btn-secondary btn-block"
-                              type="button"
-                            >
-                              Login With Auth0
-                            </button>
-                          </div>
-                          <p class="mt-4 mb-0">
-                            Don't have account?<router-link
-                              class="ml-2"
-                              tag="a"
-                              to="/auth/register"
-                            >
-                              Create Account
-                            </router-link>
-                          </p>
-                        </form>
-                      </b-card-text>
-                    </b-tab>
-                    <b-tab>
-                      <template #title>
-                        <img src="../assets/images/login/jwt.svg" />
-                        <span>JWT</span>
-                      </template>
-                      <b-card-text>
-                        <div class="alert alert-info">
-                          Username: test<br />
-                          Password: test
-                        </div>
-                        <form class="theme-form" @submit.prevent="handleSubmit">
-                          <div class="form-group">
-                            <label for="username">Username</label>
-                            <input
-                              type="text"
-                              v-model="username"
-                              name="username"
-                              class="form-control"
-                              :class="{ 'is-invalid': submitted && !username }"
-                            />
-                            <div
-                              v-show="submitted && !username"
-                              class="invalid-feedback"
-                            >
-                              Username is required
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label htmlFor="password">Password</label>
-                            <input
-                              type="password"
-                              v-model="passwordjwt"
-                              name="password"
-                              class="form-control"
-                              :class="{
-                                'is-invalid': submitted && !passwordjwt,
-                              }"
-                            />
-                            <div
-                              v-show="submitted && !passwordjwt"
-                              class="invalid-feedback"
-                            >
-                              Password is required
-                            </div>
-                          </div>
-                          <div class="form-group mt-3 mb-0">
-                            <button
-                              class="btn btn-primary btn-block"
-                              :disabled="loggingIn"
-                            >
-                              Login
-                            </button>
-                          </div>
-                          <p class="mt-4 mb-0">
-                            Don't have account?
-                            <router-link
-                              class="ml-2"
-                              tag="a"
-                              to="/auth/register"
-                            >
-                              Create Account
-                            </router-link>
-                          </p>
-                        </form>
-                      </b-card-text>
-                    </b-tab>
-                  </b-tabs>
+                      </div>
+
                 </b-card>
               </div>
             </div>
@@ -317,59 +189,6 @@
               }
             );
         }
-      },
-      // Social login
-      socialLogin() {
-        const provider = new firebase.auth.GoogleAuthProvider();
-        firebase
-          .auth()
-          .signInWithPopup(provider)
-          .then((result) => {
-            Userauth.localLogin(result);
-            this.$router.replace('/');
-          })
-          .catch((err) => {
-            alert('Oops. ' + err.message);
-          });
-      },
-      socialLoginFacebook() {
-        const provider = new firebase.auth.FacebookAuthProvider();
-        firebase
-          .auth()
-          .signInWithPopup(provider)
-          .then((result) => {
-            Userauth.localLogin(result);
-            this.$router.replace('/');
-          })
-          .catch((err) => {
-            alert('Oops. ' + err.message);
-          });
-      },
-      socialLoginTwitter() {
-        const provider = new firebase.auth.TwitterAuthProvider();
-        firebase
-          .auth()
-          .signInWithPopup(provider)
-          .then((result) => {
-            Userauth.localLogin(result);
-            this.$router.replace('/');
-          })
-          .catch((err) => {
-            alert('Oops. ' + err.message);
-          });
-      },
-      socialLoginGit() {
-        const provider = new firebase.auth.GithubAuthProvider();
-        firebase
-          .auth()
-          .signInWithPopup(provider)
-          .then((result) => {
-            Userauth.localLogin(result);
-            this.$router.replace('/');
-          })
-          .catch((err) => {
-            alert('Oops. ' + err.message);
-          });
       },
       // Auth0 login
       login() {

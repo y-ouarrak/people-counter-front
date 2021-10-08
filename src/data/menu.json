@@ -54,35 +54,24 @@
       "active": false,
       "children": [
         {
-          "path": "/project/projectlist",
-          "title": "Project list",
+          "path": "/device/management",
+          "title": "The equipment list",
           "type": "link"
         },
         {
-          "path": "/project/create-project",
-          "title": "Create new",
+          "path": "/device/records",
+          "title": "Upload the record",
           "type": "link"
         }
       ]
     },
     {
-      "title": "User Settings",
-      "icon": "settings",
-      "type": "sub",
-      "badgeType": "light-secondary",
+      "title": "Users",
+      "icon": "user",
+      "type": "link",
+      "badgeType": "light-primary",
       "active": false,
-      "children": [
-        {
-          "path": "/project/projectlist",
-          "title": "Project list",
-          "type": "link"
-        },
-        {
-          "path": "/project/create-project",
-          "title": "Create new",
-          "type": "link"
-        }
-      ]
+      "path": "/users/list"
     }
   ]
 }

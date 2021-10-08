@@ -42,8 +42,10 @@ import GeneralWidgets from '../pages/widgets/general_widgets';
 import ChartWidgets from '../pages/widgets/chart_widgets';
 
 /* projects */
-import projectlist from '../pages/project/project-list';
-import createproject from '../pages/project/create-project';
+import users from '../pages/users/index.vue';
+import usersRoles from '../pages/users/roles.vue';
+import deviceManagement from '../pages/deviceManagement/equipmentList.vue';
+import deviceRecords from '../pages/deviceManagement/records.vue';
 
 /* uikits */
 import alert from '../pages/uikits/alert';
@@ -233,7 +235,7 @@ const routes = [
     name: 'default',
     component: Default,
     meta: {
-      title: 'Default Dashboard | Cuba - Premium Admin Template',
+      title: 'Dashboard',
     }
   },
   {
@@ -269,23 +271,45 @@ const routes = [
   ]
 },
 {
-  path: '/project',
+  path: '/users',
   component: Body,
   children: [
   {
-    path: 'projectlist',
-    name: 'project-list',
-    component: projectlist,
+    path: 'list',
+    name: 'Users',
+    component: users,
     meta: {
-      title: 'Project List | Cuba - Premium Admin Template',
+      title: 'Users',
     }
   },
   {
-    path: 'create-project',
+    path: 'roles',
     name: 'create-project',
-    component: createproject,
+    component: usersRoles,
     meta: {
-      title: 'Create Project | Cuba - Premium Admin Template',
+      title: 'Roles',
+    }
+  }
+  ]
+},
+{
+  path: '/device',
+  component: Body,
+  children: [
+  {
+    path: 'management',
+    name: 'Device Management',
+    component: deviceManagement,
+    meta: {
+      title: 'Device Management',
+    }
+  },
+  {
+    path: 'records',
+    name: 'records',
+    component: deviceRecords,
+    meta: {
+      title: 'Device Records',
     }
   }
   ]
