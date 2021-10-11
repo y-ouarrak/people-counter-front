@@ -50,11 +50,11 @@
             </div>
             <div class="form-group">
                 <label>Organization</label>
-                <b-form-select v-model="user.organization" :options="orgsOptions"></b-form-select>
+                <b-form-select text-field="name" value-field="id" v-model="user.organization" :options="orgsOptions"></b-form-select>
             </div>
             <div class="form-group">
                 <label>Role</label>
-                <b-form-select v-model="user.role" :options="rolesOptions"></b-form-select>
+                <b-form-select text-field="name" value-field="id" v-model="user.role" :options="rolesOptions"></b-form-select>
             </div>
         </div>
     </div>
@@ -99,11 +99,11 @@
             </div>
             <div class="form-group">
                 <label>Organization</label>
-                <b-form-select v-model="user.organization" :options="orgsOptions"></b-form-select>
+                <b-form-select text-field="name" value-field="id" v-model="user.organization" :options="orgsOptions"></b-form-select>
             </div>
             <div class="form-group">
                 <label>Role</label>
-                <b-form-select v-model="user.role" :options="rolesOptions"></b-form-select>
+                <b-form-select text-field="name" value-field="id" v-model="user.role" :options="rolesOptions"></b-form-select>
             </div>
         </div>
     </div>
@@ -161,13 +161,13 @@
         edited: {},
         deleted: {},
         orgsOptions:[
-          { value:1, text: 'nextronic' },
-          { value:2, text: 'Aba tech' },
-          { value:3, text: 'Intelifix' },
+          { id:1, name: 'nextronic' },
+          { id:2, name: 'Aba tech' },
+          { id:3, name: 'Intelifix' },
         ],
         rolesOptions:[
-          { value:1, text: 'admin' },
-          { value:2, text: 'User' },
+          { id:1, name: 'admin' },
+          { id:2, name: 'User' },
         ],
         items: [
           { id: 1, userName: 'abenani', realName: 'Anas Benani', organization: { id: 1, name:'Nextronic' }, role:{ id: 1, name: 'Admin' }, phoneNumber: '0652804197' ,email: 'a.benani@digieye.io', creator: 'Yassine Ourrak', creation: new Date() },
@@ -186,6 +186,9 @@
       };
     },
     methods: {
+      theElm(x, value){
+        return x.id === value;
+      },
       clearUsr(){
         this.user = {
           userName: '',
@@ -197,14 +200,26 @@
         };
       },
       addUsr(ok){
-        console.log(this.user);
-        ok();
-        // this.items.unshift(this.user)
+        const user = { ...this.user };
+        // user.organization = {id: }
+        const that = this;
+        user.organization = this.orgsOptions.filter(function(elm){
+          return that.theElm(elm, that.user.organization);
+        })[0];
+        user.role = this.rolesOptions.filter(function(elm){
+          return that.theElm(elm, that.user.role);
+        })[0];
+        // console.log(user.role);
+        this.items.unshift(user);
+        user.creator = 'Yassine Ourrak';
+        user.creation = new Date();
         //send to Api
+        ok();
         this.clearUsr();
       },
       edit(data){
-        this.user = { ...data.item };
+        console.log(data);
+        this.user = { ...data.item , index: data.index};
         this.user.organization = data.item.organization.id;
         this.user.role = data.item.role.id;
         this.$bvModal.show('edit-user');
@@ -221,8 +236,16 @@
         this.items.splice(this.delIndex, 1);
       },
       editUsr(ok){
-        console.log('send Api request!');
         console.log(this.user);
+        const user = { ...this.user };
+        const that = this;
+        user.organization = this.orgsOptions.filter(function(elm){
+          return that.theElm(elm, that.user.organization);
+        })[0];
+        user.role = this.rolesOptions.filter(function(elm){
+          return that.theElm(elm, that.user.role);
+        })[0];
+        this.items.splice(this.user.index, 1, user);
         ok();
         this.clearUsr()
       }
