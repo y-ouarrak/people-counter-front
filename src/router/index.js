@@ -46,6 +46,7 @@ import users from '../pages/users/index.vue';
 import usersRoles from '../pages/users/roles.vue';
 import deviceManagement from '../pages/deviceManagement/equipmentList.vue';
 import areaManagement from '../pages/entrance/areas.vue';
+import flow from "../pages/analysis/flow.vue"
 import deviceRecords from '../pages/deviceManagement/records.vue';
 
 /* uikits */
@@ -313,6 +314,20 @@ const routes = [
       title: 'Device Records',
     }
   }
+  ]
+},
+{
+  path: '/analysis',
+  component: Body,
+  children: [
+  {
+    path: 'flow',
+    name: 'flow',
+    component: flow,
+    meta: {
+      title: 'Passenger Flow Data',
+    }
+  },
   ]
 },
 {

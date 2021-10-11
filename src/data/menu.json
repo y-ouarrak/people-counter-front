@@ -16,7 +16,7 @@
       "active": false,
       "children": [
         {
-          "path": "/entrance/areas",
+          "path": "/analysis/flow",
           "title": "Passenger flow data",
           "type": "link"
         },
