@@ -159,10 +159,6 @@
         },
         edited: {},
         deleted: {},
-        items: [
-          { id: 1, userName: 'abenani', realName: 'Anas Benani', organization: { id: 1, name:'Nextronic' }, role:{ id: 1, name: 'Admin' }, phoneNumber: '0652804197' ,email: 'a.benani@digieye.io', creator: 'Yassine Ourrak', creation: new Date() },
-          { id: 2, userName: 'aenani', realName: 'Anas Benani', organization: { id: 1, name:'Nextronic' }, role:{ id: 2, name: 'User' }, phoneNumber: '0652804197' ,email: 'a.benani@digieye.io', creator: 'Yassine Ourrak', creation: new Date() },
-        ],
         orgsOptions:[
           { value:1, text: 'nextronic' },
           { value:2, text: 'Aba tech' },
@@ -171,6 +167,10 @@
         rolesOptions:[
           { value:1, text: 'admin' },
           { value:2, text: 'User' },
+        ],
+        items: [
+          { id: 1, userName: 'abenani', realName: 'Anas Benani', organization: { id: 1, name:'Nextronic' }, role:{ id: 1, name: 'Admin' }, phoneNumber: '0652804197' ,email: 'a.benani@digieye.io', creator: 'Yassine Ourrak', creation: new Date() },
+          { id: 2, userName: 'aenani', realName: 'Anas Benani', organization: { id: 1, name:'Nextronic' }, role:{ id: 2, name: 'User' }, phoneNumber: '0652804197' ,email: 'a.benani@digieye.io', creator: 'Yassine Ourrak', creation: new Date() },
         ],
         fields: [
           { key: 'userName', label: 'Username' },
