@@ -6,7 +6,7 @@
     </b-toast>
     <div class="card" style="min-height: 700px;">
       <div class="card-body">
-            <h5 class="card-title">Passenger Flow Data</h5>
+            <h5 class="card-title">Place Data</h5>
         <div class="row">
           <div class="col-12 col-lg-3 mb-2">
             <b-form-select

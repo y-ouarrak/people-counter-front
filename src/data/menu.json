@@ -21,12 +21,12 @@
           "type": "link"
         },
         {
-          "path": "/project/create-project",
+          "path": "/analysis/area",
           "title": "Area data",
           "type": "link"
         },
         {
-          "path": "/project/create-project",
+          "path": "/analysis/place",
           "title": "Place data",
           "type": "link"
         }
