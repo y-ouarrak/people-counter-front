@@ -45,6 +45,7 @@ import ChartWidgets from '../pages/widgets/chart_widgets';
 import users from '../pages/users/index.vue';
 import usersRoles from '../pages/users/roles.vue';
 import deviceManagement from '../pages/deviceManagement/equipmentList.vue';
+import areaManagement from '../pages/entrance/areas.vue';
 import deviceRecords from '../pages/deviceManagement/records.vue';
 
 /* uikits */
@@ -302,6 +303,28 @@ const routes = [
     component: deviceManagement,
     meta: {
       title: 'Device Management',
+    }
+  },
+  {
+    path: 'records',
+    name: 'records',
+    component: deviceRecords,
+    meta: {
+      title: 'Device Records',
+    }
+  }
+  ]
+},
+{
+  path: '/entrance',
+  component: Body,
+  children: [
+  {
+    path: 'areas',
+    name: 'areas',
+    component: areaManagement,
+    meta: {
+      title: 'Area Management',
     }
   },
   {

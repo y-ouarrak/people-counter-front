@@ -16,13 +16,18 @@
       "active": false,
       "children": [
         {
-          "path": "/project/projectlist",
-          "title": "Project list",
+          "path": "/entrance/areas",
+          "title": "Passenger flow data",
           "type": "link"
         },
         {
           "path": "/project/create-project",
-          "title": "Create new",
+          "title": "Area data",
+          "type": "link"
+        },
+        {
+          "path": "/project/create-project",
+          "title": "Place data",
           "type": "link"
         }
       ]
@@ -35,13 +40,13 @@
       "active": false,
       "children": [
         {
-          "path": "/project/projectlist",
-          "title": "Project list",
+          "path": "/entrance/areas",
+          "title": "Area management",
           "type": "link"
         },
         {
           "path": "/project/create-project",
-          "title": "Create new",
+          "title": "Places management",
           "type": "link"
         }
       ]
