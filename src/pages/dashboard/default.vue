@@ -13,11 +13,11 @@
                   <div class="row">
                     <div class="col-12">
                       <h6><i class="fa fa-sign-in in"></i>&nbsp; Entry</h6>
-                      <h5 class="mb-0 counter">2658</h5>
+                      <h5 class="mb-0 counter">0</h5>
                     </div>
                     <div class="col-12 text-right">
                       <h6><i class="fa fa-sign-out out"></i>&nbsp; Exit </h6>
-                  <h5 class="mb-0 counter">1589</h5>
+                  <h5 class="mb-0 counter">0</h5>
                     </div>
                   </div>
                 </div>
@@ -48,11 +48,11 @@
                   <div class="row">
                     <div class="col-12">
                       <h6><i class="fa fa-sign-in in"></i>&nbsp; Entry</h6>
-                      <h5 class="mb-0 counter">6658</h5>
+                      <h5 class="mb-0 counter">0</h5>
                     </div>
                     <div class="col-12 text-right">
                       <h6><i class="fa fa-sign-out out"></i>&nbsp; Exit </h6>
-                  <h5 class="mb-0 counter">7979</h5>
+                  <h5 class="mb-0 counter">0</h5>
                     </div>
                   </div>
                 </div>
@@ -83,11 +83,11 @@
                   <div class="row">
                     <div class="col-12">
                       <h6><i class="fa fa-sign-in in"></i>&nbsp; Entry</h6>
-                      <h5 class="mb-0 counter">9226658</h5>
+                      <h5 class="mb-0 counter">0</h5>
                     </div>
                     <div class="col-12 text-right">
                       <h6><i class="fa fa-sign-out out"></i>&nbsp; Exit </h6>
-                  <h5 class="mb-0 counter">1454879</h5>
+                  <h5 class="mb-0 counter">0</h5>
                     </div>
                   </div>
                 </div>
@@ -118,11 +118,11 @@
                   <div class="row">
                     <div class="col-12">
                       <h6><i class="fa fa-sign-in in"></i>&nbsp; Entry</h6>
-                      <h5 class="mb-0 counter ">1226658</h5>
+                      <h5 class="mb-0 counter ">0</h5>
                     </div>
                     <div class="col-12 text-right">
                       <h6><i class="fa fa-sign-out out"></i>&nbsp; Exit </h6>
-                  <h5 class="mb-0 counter">1457949</h5>
+                  <h5 class="mb-0 counter">0</h5>
                     </div>
                   </div>
                 </div>
@@ -356,10 +356,12 @@
             {
               name: "Entry",
               data: [6, 20, 15, 40, 18, 20, 18, 23, 18, 35, 30, 55, 0],
+              // data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             },
             {
               name: "Exit",
               data: [2, 22, 35, 32, 40, 25, 50, 38, 42, 28, 20, 45, 0],
+              // data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             },
           ],
         },

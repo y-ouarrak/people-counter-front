@@ -17,7 +17,7 @@
       <router-link to="/">
         <img
           class="img-fluid"
-          src="../../assets/images/logo/logo-icon.png"
+          src="../../assets/images/logo/logoicon.png"
           alt=""
       /></router-link>
     </div>
