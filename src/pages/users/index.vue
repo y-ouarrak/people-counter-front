@@ -111,10 +111,10 @@
         </form>
     <template #modal-footer="{ ok, cancel}">
       <b-button @click="cancel()">
-        Annuler
+        Cancel
       </b-button>
       <b-button variant="primary" @click="editUsr(ok)">
-        Ajouter
+        Edit
       </b-button>
     </template>
   </b-modal>
@@ -148,6 +148,7 @@
   export default {
     data() {
       return {
+        delIndex: null,
         user: {
           id: null,
           userName: '',
@@ -198,6 +199,7 @@
       addUsr(ok){
         console.log(this.user);
         ok();
+        // this.items.unshift(this.user)
         //send to Api
         this.clearUsr();
       },
@@ -208,15 +210,19 @@
         this.$bvModal.show('edit-user');
       },
       del(data){
+        console.log(data);
         this.user = data.item;
+        this.delIndex = data.index;
         this.$bvModal.show('delete-dialog');
       },
       confirmDelete(){
         console.log('send to api !');
         console.log(this.user.id);
+        this.items.splice(this.delIndex, 1);
       },
       editUsr(ok){
         console.log('send Api request!');
+        console.log(this.user);
         ok();
         this.clearUsr()
       }
