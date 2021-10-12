@@ -429,31 +429,16 @@
       period: function(val){
         switch(val){
         case 'weekly':
-          this.fetchChart(new Date(new Date() - 7 * 24 * 60 * 60 * 1000).toISOString().slice(0, 19).replace('T', ' '))
+          this.fetchChart(new Date(new Date() - 7 * 24 * 60 * 60 * 1000).toISOString().slice(0, 19).replace('T', ' '));
           break;
         case 'monthly':
-          this.fetchChart(new Date(new Date() - 7 * 24 * 60 * 60 * 1000).toISOString().slice(0, 19).replace('T', ' '))
+          this.fetchChart(new Date(new Date() - 30 * 24 * 60 * 60 * 1000).toISOString().slice(0, 19).replace('T', ' '));
           break;
         // case 'yearly':
         //   console.log(val);
         //   break;
         default:
-          this.fetchChart(new Date(new Date() - 30 * 24 * 60 * 60 * 1000).toISOString().slice(0, 19).replace('T', ' '))
-
-          // this.show = false;
-          // try{
-          //   const { data } = await API.get('/events', { params: { startDate: this.start, endDate: this.end , perPage: 10000000 } });
-          //   const inArray = data.docs.map((elm) => elm.in);
-          //   const outArray = data.docs.map((elm) => elm.out);
-          //   const timeArray = data.docs.map((elm) => `${elm.date} ${elm.hour}:00:00`);
-
-          //   this.series[0] = { name: 'In', data: inArray };
-          //   this.series[1] = { name: 'Out', data: outArray };
-          //   this.chartOptions.xaxis.categories = timeArray;
-          //   this.show = true;
-          // }catch(e){
-          //   console.log(e);
-          // }
+          this.fetchChart();
         }
       }
     },
