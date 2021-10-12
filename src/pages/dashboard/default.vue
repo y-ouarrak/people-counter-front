@@ -13,11 +13,11 @@
                   <div class="row">
                     <div class="col-12">
                       <h6><i class="fa fa-sign-in in"></i>&nbsp; Entry</h6>
-                      <h5 class="mb-0 counter">0</h5>
+                      <h5 class="mb-0 counter">{{all.in}}</h5>
                     </div>
                     <div class="col-12 text-right">
                       <h6><i class="fa fa-sign-out out"></i>&nbsp; Exit </h6>
-                  <h5 class="mb-0 counter">0</h5>
+                  <h5 class="mb-0 counter">{{all.out}}</h5>
                     </div>
                   </div>
                 </div>
@@ -44,15 +44,50 @@
             <div slot="with-padding">
               <div class="media static-top-widget">
                 <div class="media-body">
-                  <h6 class="font-roboto">Today</h6>
+                  <h6 class="font-roboto">Last Hour</h6>
                   <div class="row">
                     <div class="col-12">
                       <h6><i class="fa fa-sign-in in"></i>&nbsp; Entry</h6>
-                      <h5 class="mb-0 counter">0</h5>
+                      <h5 class="mb-0 counter ">{{hour.in}}</h5>
                     </div>
                     <div class="col-12 text-right">
                       <h6><i class="fa fa-sign-out out"></i>&nbsp; Exit </h6>
-                  <h5 class="mb-0 counter">0</h5>
+                  <h5 class="mb-0 counter">{{hour.out}}</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="progress-widget">
+                <div class="progress sm-progress-bar progress-animate">
+                  <div
+                    class="progress-gradient-danger"
+                    role="progressbar"
+                    style="width: 100%"
+                    aria-valuenow="75"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    <span class="animate-circle"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </px-card>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+          <px-card class="static-top-widget-card">
+            <div slot="with-padding">
+              <div class="media static-top-widget">
+                <div class="media-body">
+                  <h6 class="font-roboto">Last Day</h6>
+                  <div class="row">
+                    <div class="col-12">
+                      <h6><i class="fa fa-sign-in in"></i>&nbsp; Entry</h6>
+                      <h5 class="mb-0 counter">{{day.in}}</h5>
+                    </div>
+                    <div class="col-12 text-right">
+                      <h6><i class="fa fa-sign-out out"></i>&nbsp; Exit </h6>
+                  <h5 class="mb-0 counter">{{day.out}}</h5>
                     </div>
                   </div>
                 </div>
@@ -79,15 +114,15 @@
             <div slot="with-padding">
               <div class="media static-top-widget">
                 <div class="media-body">
-                  <h6 class="font-roboto">This week</h6>
+                  <h6 class="font-roboto">Last week</h6>
                   <div class="row">
                     <div class="col-12">
                       <h6><i class="fa fa-sign-in in"></i>&nbsp; Entry</h6>
-                      <h5 class="mb-0 counter">0</h5>
+                      <h5 class="mb-0 counter">{{week.in}}</h5>
                     </div>
                     <div class="col-12 text-right">
                       <h6><i class="fa fa-sign-out out"></i>&nbsp; Exit </h6>
-                  <h5 class="mb-0 counter">0</h5>
+                  <h5 class="mb-0 counter">{{week.out}}</h5>
                     </div>
                   </div>
                 </div>
@@ -96,41 +131,6 @@
                 <div class="progress sm-progress-bar progress-animate">
                   <div
                     class="progress-gradient-primary"
-                    role="progressbar"
-                    style="width: 100%"
-                    aria-valuenow="75"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  >
-                    <span class="animate-circle"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </px-card>
-        </div>
-        <div class="col-sm-6 col-xl-3">
-          <px-card class="static-top-widget-card">
-            <div slot="with-padding">
-              <div class="media static-top-widget">
-                <div class="media-body">
-                  <h6 class="font-roboto">This month</h6>
-                  <div class="row">
-                    <div class="col-12">
-                      <h6><i class="fa fa-sign-in in"></i>&nbsp; Entry</h6>
-                      <h5 class="mb-0 counter ">0</h5>
-                    </div>
-                    <div class="col-12 text-right">
-                      <h6><i class="fa fa-sign-out out"></i>&nbsp; Exit </h6>
-                  <h5 class="mb-0 counter">0</h5>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="progress-widget">
-                <div class="progress sm-progress-bar progress-animate">
-                  <div
-                    class="progress-gradient-danger"
                     role="progressbar"
                     style="width: 100%"
                     aria-valuenow="75"
@@ -154,10 +154,10 @@
                     <div class="col-xl-8 col-md-8 col-sm-8 col-12 p-0">
                       <div class="inner-top-left">
                         <ul class="d-flex list-unstyled">
-                          <li class="switch" :class="period=='daily'?'active':''" @click="period = 'daily'">Daily</li>
-                          <li class="switch" :class="period=='weekly'?'active':''" @click="period = 'weekly'">Weekly</li>
-                          <li class="switch" :class="period=='monthly'?'active':''" @click="period = 'monthly'"> Monthly</li>
-                          <li class="switch" :class="period=='yearly'?'active':''" @click="period = 'yearly'">Yearly</li>
+                          <li class="switch" :class="period=='daily'?'active':''" @click="period = 'daily'">Day</li>
+                          <li class="switch" :class="period=='weekly'?'active':''" @click="period = 'weekly'">Week</li>
+                          <li class="switch" :class="period=='monthly'?'active':''" @click="period = 'monthly'">Month</li>
+                          <!-- <li class="switch" :class="period=='yearly'?'active':''" @click="period = 'yearly'">Yearly</li> -->
                         </ul>
                       </div>
                     </div>
@@ -178,6 +178,7 @@
                         <div class="current-sale-container">
                           <div id="chart-currently">
                             <apexchart
+                              v-if="show"
                               height="290"
                               type="area"
                               :options="apexDashboard.options"
@@ -249,9 +250,65 @@
   //   fgColor: primary,
   // });
 
+  import { API } from '@/axios';
+  // console.log(new Date().toISOString().slice(0, 19).replace('T', ' '));
   export default {
     data() {
       return {
+        show: true,
+        all: {
+          in: null,
+          out: null,
+        },
+        day: {
+          in: null,
+          out: null,
+        },
+        week: {
+          in: null,
+          out: null,
+        },
+        hour: {
+          in: null,
+          out: null,
+        },
+
+        series: [
+          {
+            name: "Entry",
+            data: [6, 20, 15, 40, 18, 20, 18, 23, 18, 35, 30, 55, 0],
+            // data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          },
+          {
+            name: "Exit",
+            data: [2, 22, 35, 32, 40, 25, 50, 38, 42, 28, 20, 45, 0],
+            // data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          },
+        ],
+
+        chartOptions: {
+          chart: {
+            height: 350,
+            type: 'area'
+          },
+          dataLabels: {
+            enabled: false
+          },
+          stroke: {
+            curve: 'smooth'
+          },
+          colors: ['#7366ff', '#dd3545'],
+          xaxis: {
+            type: 'datetime',
+            categories: []
+          },
+          tooltip: {
+            x: {
+              format: 'dd/MM/yy HH:mm'
+            },
+          },
+        },
+
         apexDashboard: {
           options: {
             chart: {
@@ -370,6 +427,7 @@
     },
     watch: {
       period: function(val){
+        let time;
         switch(val){
         case 'weekly':
           console.log(val);
@@ -382,26 +440,68 @@
           break;
         default:
           console.log(val);
+
+          // this.show = false;
+          // try{
+          //   const { data } = await API.get('/events', { params: { startDate: this.start, endDate: this.end , perPage: 10000000 } });
+          //   const inArray = data.docs.map((elm) => elm.in);
+          //   const outArray = data.docs.map((elm) => elm.out);
+          //   const timeArray = data.docs.map((elm) => `${elm.date} ${elm.hour}:00:00`);
+
+          //   this.series[0] = { name: 'In', data: inArray };
+          //   this.series[1] = { name: 'Out', data: outArray };
+          //   this.chartOptions.xaxis.categories = timeArray;
+          //   this.show = true;
+          // }catch(e){
+          //   console.log(e);
+          // }
         }
       }
     },
     mounted() {
-    // var d = new Date();
+      // var d = new Date();
     // var curHr = this.addZero(d.getHours());
     // var curMi = this.addZero(d.getMinutes());
     // var meridiem = curHr >= 12 ? 'PM' : 'AM';
     // this.time = curHr + ':' + curMi + ' ' + meridiem;
     // if (curHr < 12) {
-    //   this.greeting = 'Good morning!';
+      //   this.greeting = 'Good morning!';
     // }else if (curHr < 18) {
-    //   this.greeting = 'Good afternoon!';
+      //   this.greeting = 'Good afternoon!';
     // }else {
-    //   this.greeting = 'Good evening!';
+      //   this.greeting = 'Good evening!';
     // }
     // document.getElementById('ordervalue').append(ordervalue);
     // document.getElementById('productvalue').append(productvalue);
     },
+    created(){
+      console.log(this.apexDashboard.series);
+      console.log(this.apexDashboard.options.xaxis.categories);
+      this.fetchData();
+      const that = this;
+      setInterval(function(){
+        that.fetchData();
+      }, 5000);
+    },
     methods: {
+      async fetchData(){
+        const nowTime = new Date().toISOString().slice(0, 19).replace('T', ' ');
+        const hourTime = new Date(new Date() -    1 * 60 * 60 * 1000).toISOString().slice(0, 19).replace('T', ' ');
+        const dayTime = new Date(new Date() - 1 * 24 * 60 * 60 * 1000).toISOString().slice(0, 19).replace('T', ' ');
+        const weekTime = new Date(new Date() - 7 * 24 * 60 * 60 * 1000).toISOString().slice(0, 19).replace('T', ' ');
+        try{
+          const { data:all } = await API.get('/events/quick');
+          const { data:hour } = await API.get('/events/quick', { params: { endDate: nowTime, startDate: hourTime } });
+          const { data:day } = await API.get('/events/quick', { params: { endDate: nowTime, startDate: dayTime } });
+          const { data:week } = await API.get('/events/quick', { params: { endDate: nowTime, startDate: weekTime } });
+          this.all = all;
+          this.day = day;
+          this.week = week;
+          this.hour = hour;
+        }catch(e){
+          console.log(e);
+        }
+      },
       addZero(i) {
         if (i < 10) {
           i = "0" + i;

@@ -5,8 +5,8 @@
       <div class="card-body">
          <b-button variant="primary" @click="$bvModal.show('add-device')">Add Device</b-button>
             <b-table class="mt-4" striped :fields="fields" :items="items">
-                <template v-slot:cell(creation)="row">
-              {{row.value.toLocaleString('en-US')}}
+                <template v-slot:cell(createdAt)="row">
+              {{new Date(row.value).toLocaleString('en-US')}}
           </template>
           <!-- <template v-slot:cell(organization)='row'>
               {{row.item.organization.name}}
@@ -84,6 +84,7 @@
 </template>
 
 <script>
+  import { API } from '@/axios.js';
   export default {
     data(){
       return{
@@ -94,17 +95,11 @@
           store: "",
           passage_way: "",
         },
-        items: [
-          { id: 1, number: '12298465498', name: 'Device00', store: { value: 1, text: 'Nextronic' }, 
-            passage_way: 'thechnopark',
-
-          },
-        ],
+        items: [],
         fields: [
-          { key: 'number' },
+          { key: 'serial' },
           { key: 'name' },
-          { key:'store.text', label:'Store' },
-          { key: 'passage_way' },
+          { key:'createdAt', label:'Creation' },
           { key: 'action' },
         ],
         stores: [
@@ -113,7 +108,19 @@
         ]
       }
     },
+    created(){
+      this.fetchDevices();
+    },
     methods: {
+      async fetchDevices(){
+        try{
+          const { data, status } = await API.get('/devices');
+          if(status === 200)
+            this.items = data.docs;
+        }catch(e){
+          console.log(e);
+        }
+      },
       clearDevice(){
         this.device = {
           number: "",
@@ -130,13 +137,14 @@
         this.items.unshift(device);
       },
       del(data){
-        console.log(data);
         this.device = data.item;
         this.delIndex = data.index;
         this.$bvModal.show('delete-dialog');
       },
-      confirmDelete(){
-        this.items.splice(this.delIndex, 1);
+      async confirmDelete(){
+        // console.log(this.device);
+        const res = await API.delete(`/devices/${this.device.serial}`);
+        console.log(res);
       }
     }
   };

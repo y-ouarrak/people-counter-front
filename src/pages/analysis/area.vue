@@ -8,19 +8,13 @@
       <div class="card-body">
             <h5 class="card-title">Area Data</h5>
         <div class="row">
-          <div class="col-12 col-lg-3 mb-2">
+          <div class="col-12 col-lg-4 mb-2">
             <b-form-select
               v-model="area"
               :options="areaOptions"
             ></b-form-select>
           </div>
-          <div class="col-12 col-lg-3 mb-2">
-            <b-form-select
-              v-model="store"
-              :options="storeOptions"
-            ></b-form-select>
-          </div>
-          <div class="col-12 col-lg-3 mb-2">
+          <div class="col-12 col-lg-4 mb-2">
             <div>
               <b-form-datepicker
                 id="start-date"
@@ -30,7 +24,7 @@
               ></b-form-datepicker>
             </div>
           </div>
-          <div class="col-12 col-lg-3 mb-2">
+          <div class="col-12 col-lg-4 mb-2">
             <div>
               <b-form-datepicker
                 id="end-date"
@@ -43,7 +37,7 @@
           <div class="col-12 mb-2"><b-button variant="primary" @click="showChart"><i class="fa fa-search"></i> Inquire</b-button></div>
         </div>
         <div id="chart">
-        <apexchart v-if="show" type="line" height="350" :options="chartOptions" :series="series"></apexchart>
+        <apexchart v-if="show" height="350" :options="chartOptions" :series="series"></apexchart>
       </div>
       </div>
     </div>
@@ -51,6 +45,7 @@
 </template>
 
 <script>
+  import { API } from "@/axios"
   export default {
     data() {
       return {
@@ -59,73 +54,76 @@
         start: null,
         end: null,
         show: false,
-        msg: "",
+        msg: '',
         areaOptions: [
-          { value: null, text: "Please select an Area" },
-          { value: 1, text: "Area 1" },
-          { value: 2, text: "Area 2" },
-          { value: 3, text: "Area 3" },
+          { value: null, text: 'Please select an Area' },
+          { value: 1, text: 'Expo 22' },
         ],
         storeOptions: [
-          { value: null, text: "Please select a Store" },
-          { value: 1, text: "Store 1" },
-          { value: 2, text: "Store 2" },
-          { value: 3, text: "Store 3" },
+          { value: null, text: 'Please select a Store' },
+          { value: 1, text: 'Store 1' },
+          { value: 2, text: 'Store 2' },
+          { value: 3, text: 'Store 3' },
         ],
-        series: [{
-          name: "People",
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0]
-        }],
+
+        series: [],
+
         chartOptions: {
           chart: {
             height: 350,
-            type: 'line',
-            zoom: {
-              enabled: false
-            }
+            type: 'area'
           },
           dataLabels: {
             enabled: false
           },
           stroke: {
-            curve: 'straight'
+            curve: 'smooth'
           },
-          title: {
-            text: 'Chart',
-            align: 'left'
+          colors: ['#7366ff', '#dd3545'],
+          xaxis: {
+            type: 'datetime',
+            categories: []
           },
-          grid: {
-            row: {
-              colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-              opacity: 0.5
+          tooltip: {
+            x: {
+              format: 'dd/MM/yy HH:mm'
             },
           },
-          xaxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
-          }
         },
       };
     },
     methods: {
-      showChart()
-      {
+      async showChart(){
+        this.show = false;
         if(!this.area)
-          this.msg = "Area field is Empty!";
-        else if(!this.store)
-          this.msg = "Store field is Empty!";
+          this.msg = 'Area field is Empty!';
         else if(!this.start)
-          this.msg = "Start Date field is Empty!";
+          this.msg = 'Start Date field is Empty!';
         else if(!this.end)
-          this.msg = "End Date field is Empty!";
+          this.msg = 'End Date field is Empty!';
         else {
           this.$bvToast.hide('error-toast');
-          this.msg = "";
+          this.msg = '';
 
         }
         if(this.msg)
-          this.$bvToast.show('error-toast')
-        else
-          this.show = true;
+          this.$bvToast.show('error-toast');
+        else{
+          this.show = false;
+          try{
+            const { data } = await API.get('/events', { params: { startDate: this.start, endDate: this.end , perPage: 10000000 } });
+            const inArray = data.docs.map((elm) => elm.in);
+            const outArray = data.docs.map((elm) => elm.out);
+            const timeArray = data.docs.map((elm) => `${elm.date} ${elm.hour}:00:00`);
+
+            this.series[0] = { name: 'In', data: inArray };
+            this.series[1] = { name: 'Out', data: outArray };
+            this.chartOptions.xaxis.categories = timeArray;
+            this.show = true;
+          }catch(e){
+            console.log(e);
+          }
+        }
       }
     }
   };
