@@ -176,7 +176,7 @@
                     <div class="col-xl-12">
                       <div class="card-body p-0">
                         <div class="current-sale-container">
-                          <div id="chart-currently" style="min-height: 300px;">
+                          <div id="chart-currently" style="min-height: 320px;">
                             <apexchart
                               v-if="show"
                               height="290"
@@ -195,7 +195,7 @@
                     <div class="media p-0">
                       <div class="media-body">
                         <h6><i class="fa fa-refresh"></i> &nbsp;Total Traffic</h6>
-                        <p>954897</p>
+                        <p>{{totalIn + totalOut}}</p>
                       </div>
                     </div>
                   </div>
@@ -203,7 +203,7 @@
                     <div class="media p-0">
                       <div class="media-body">
                         <h6><i class="fa fa-sign-in"></i> &nbsp;Total Entry</h6>
-                        <p>479879</p>
+                        <p>{{totalIn}}</p>
                       </div>
                     </div>
                   </div>
@@ -211,7 +211,7 @@
                     <div class="media p-0">
                       <div class="media-body">
                         <h6><i class="fa fa-sign-out"></i> &nbsp;Total Exit</h6>
-                        <p>897745</p>
+                        <p>{{totalOut}}</p>
                       </div>
                     </div>
                   </div>
@@ -255,6 +255,8 @@
   export default {
     data() {
       return {
+        totalOut: null,
+        totalIn: null,
         show: true,
         all: {
           in: null,
@@ -479,6 +481,9 @@
           this.apexDashboard.series[0] = { name: 'In', data: inArray };
           this.apexDashboard.series[1] = { name: 'Out', data: outArray };
           this.apexDashboard.options.xaxis.categories = timeArray;
+          const red = (val1, val2) => parseInt(val1) + parseInt(val2);
+          this.totalIn = inArray.reduce(red);
+          this.totalOut = outArray.reduce(red);
           this.show = true;
         }catch(e){
           console.log(e);
