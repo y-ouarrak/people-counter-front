@@ -1,7 +1,6 @@
 <template>
   <div>
     <Breadcrumbs title='Place' />
-    {{device}}
       <b-toast id='error-toast' title='Error' variant='danger'>
      {{msg}}
     </b-toast>
@@ -126,7 +125,7 @@
         else{
           this.show = false;
           try{
-            const { data } = await API.get('/events', { params: { startDate: this.start, endDate: this.end , uuid: this.device, perPage: 10000000 } });
+            const { data } = await API.get('/events', { params: { startDate: this.start, endDate: `${this.end} 23:59:00` , uuid: this.device, perPage: 10000000 } });
             const inArray = data.docs.map((elm) => elm.in);
             const outArray = data.docs.map((elm) => elm.out);
             const timeArray = data.docs.map((elm) => `${elm.date} ${elm.hour}:00:00`);

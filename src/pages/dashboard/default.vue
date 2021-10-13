@@ -334,21 +334,7 @@
               offsetX: 0,
               offsetY: 0,
               show: false,
-              categories: [
-                "Jan",
-                "Feb",
-                "Mar",
-                "Apr",
-                "May",
-                "Jun",
-                "Jul",
-                "Aug",
-                "Sep",
-                "Oct",
-                "Nov",
-                "Dec",
-                "Jan",
-              ],
+              categories: [],
               labels: {
                 low: 0,
                 offsetX: 0,
@@ -414,13 +400,11 @@
           series: [
             {
               name: "Entry",
-              data: [6, 20, 15, 40, 18, 20, 18, 23, 18, 35, 30, 55, 0],
-              // data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+              data: [],
             },
             {
               name: "Exit",
-              data: [2, 22, 35, 32, 40, 25, 50, 38, 42, 28, 20, 45, 0],
-              // data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+              data: [],
             },
           ],
         },
