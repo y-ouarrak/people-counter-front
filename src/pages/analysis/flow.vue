@@ -46,6 +46,33 @@
         <apexchart v-if="show" type="line" height="350" :options="chartOptions" :series="series"></apexchart>
       </div>
       </div>
+      <div v-if="show" class="row border-top m-0 p-2 text-center">
+                  <div class="col-xl-4 pl-0 col-md-6 col-sm-6">
+                    <div class="media p-0">
+                      <div class="media-body">
+                        <h6><i class="fa fa-refresh"></i> &nbsp;Total Traffic</h6>
+                        <p>11</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xl-4 col-md-6 col-sm-6">
+                    <div class="media p-0">
+                      <div class="media-body">
+                        <h6><i class="fa fa-sign-in"></i> &nbsp;Total Entry</h6>
+                        <p>11</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xl-4 pl-0 col-md-6 col-sm-6">
+                    <div class="media p-0">
+                      <div class="media-body">
+                        <h6><i class="fa fa-sign-out"></i> &nbsp;Total Exit</h6>
+                        <p>11</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+      </div>
     </div>
   </div>
 </template>

@@ -37,18 +37,47 @@
           <div class="col-12 mb-2"><b-button variant="primary" @click="showChart"><i class="fa fa-search"></i> Inquire</b-button></div>
         </div>
         <div id="chart">
-        <apexchart v-if="show" height="350" :options="chartOptions" :series="series"></apexchart>
+          <apexchart v-if="show" height="350" :options="chartOptions" :series="series"></apexchart>
+        </div>
       </div>
-      </div>
+      <div v-if="show" class="row border-top m-0 p-2 text-center">
+                  <div class="col-xl-4 pl-0 col-md-6 col-sm-6">
+                    <div class="media p-0">
+                      <div class="media-body">
+                        <h6><i class="fa fa-refresh"></i> &nbsp;Total Traffic</h6>
+                        <p>{{totalOut + totalIn}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xl-4 col-md-6 col-sm-6">
+                    <div class="media p-0">
+                      <div class="media-body">
+                        <h6><i class="fa fa-sign-in"></i> &nbsp;Total Entry</h6>
+                        <p>{{totalIn}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xl-4 pl-0 col-md-6 col-sm-6">
+                    <div class="media p-0">
+                      <div class="media-body">
+                        <h6><i class="fa fa-sign-out"></i> &nbsp;Total Exit</h6>
+                        <p>{{totalOut}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+          </div>
     </div>
   </div>
 </template>
 
 <script>
-  import { API } from "@/axios"
+  import { API } from '@/axios';
   export default {
     data() {
       return {
+        totalOut: null,
+        totalIn: null,
         area: null,
         store: null,
         start: null,
@@ -115,7 +144,9 @@
             const inArray = data.docs.map((elm) => elm.in);
             const outArray = data.docs.map((elm) => elm.out);
             const timeArray = data.docs.map((elm) => `${elm.date} ${elm.hour}:00:00`);
-
+            const red = (val1, val2) => parseInt(val1) + parseInt(val2);
+            this.totalIn = inArray.reduce(red);
+            this.totalOut = outArray.reduce(red);
             this.series[0] = { name: 'In', data: inArray };
             this.series[1] = { name: 'Out', data: outArray };
             this.chartOptions.xaxis.categories = timeArray;
