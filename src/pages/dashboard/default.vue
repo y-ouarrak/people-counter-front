@@ -13,11 +13,11 @@
                   <div class="row">
                     <div class="col-12">
                       <h6><i class="fa fa-sign-in in"></i>&nbsp; Entry</h6>
-                      <h5 class="mb-0 counter">{{all.in}}</h5>
+                      <h5 class="mb-0 counter">{{(all.in) ? all.in : 0}}</h5>
                     </div>
                     <div class="col-12 text-right">
                       <h6><i class="fa fa-sign-out out"></i>&nbsp; Exit </h6>
-                  <h5 class="mb-0 counter">{{all.out}}</h5>
+                  <h5 class="mb-0 counter">{{(all.out) ? all.out : 0}}</h5>
                     </div>
                   </div>
                 </div>
@@ -48,11 +48,11 @@
                   <div class="row">
                     <div class="col-12">
                       <h6><i class="fa fa-sign-in in"></i>&nbsp; Entry</h6>
-                      <h5 class="mb-0 counter ">{{hour.in}}</h5>
+                      <h5 class="mb-0 counter ">{{(hour.in) ? hour.in: 0}}</h5>
                     </div>
                     <div class="col-12 text-right">
                       <h6><i class="fa fa-sign-out out"></i>&nbsp; Exit </h6>
-                  <h5 class="mb-0 counter">{{hour.out}}</h5>
+                  <h5 class="mb-0 counter">{{(hour.out) ? hour.out: 0}}</h5>
                     </div>
                   </div>
                 </div>
@@ -83,11 +83,11 @@
                   <div class="row">
                     <div class="col-12">
                       <h6><i class="fa fa-sign-in in"></i>&nbsp; Entry</h6>
-                      <h5 class="mb-0 counter">{{day.in}}</h5>
+                      <h5 class="mb-0 counter">{{(day.in) ? day.in: 0}}</h5>
                     </div>
                     <div class="col-12 text-right">
                       <h6><i class="fa fa-sign-out out"></i>&nbsp; Exit </h6>
-                  <h5 class="mb-0 counter">{{day.out}}</h5>
+                  <h5 class="mb-0 counter">{{(day.out) ? day.out : 0}}</h5>
                     </div>
                   </div>
                 </div>
@@ -118,11 +118,11 @@
                   <div class="row">
                     <div class="col-12">
                       <h6><i class="fa fa-sign-in in"></i>&nbsp; Entry</h6>
-                      <h5 class="mb-0 counter">{{week.in}}</h5>
+                      <h5 class="mb-0 counter">{{(week.in) ? week.in : 0}}</h5>
                     </div>
                     <div class="col-12 text-right">
                       <h6><i class="fa fa-sign-out out"></i>&nbsp; Exit </h6>
-                  <h5 class="mb-0 counter">{{week.out}}</h5>
+                  <h5 class="mb-0 counter">{{(week.out) ? week.out: 0}}</h5>
                     </div>
                   </div>
                 </div>
@@ -255,8 +255,8 @@
   export default {
     data() {
       return {
-        totalOut: null,
-        totalIn: null,
+        totalOut: 0,
+        totalIn: 0,
         show: true,
         all: {
           in: null,

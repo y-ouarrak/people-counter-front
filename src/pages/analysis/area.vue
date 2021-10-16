@@ -76,8 +76,8 @@
   export default {
     data() {
       return {
-        totalOut: null,
-        totalIn: null,
+        totalOut: 0,
+        totalIn: 0,
         area: null,
         store: null,
         start: null,
