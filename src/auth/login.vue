@@ -100,6 +100,11 @@
                             Create Account
                           </router-link>
                         </p>
+                        <p class="mt-4 mb-0">
+                          <router-link class="ml-2" tag="a" to="/auth/forgetpassword">
+                            Forgotten password?
+                          </router-link>
+                        </p>
                       </form>
                     </b-card-text>
                   </div>

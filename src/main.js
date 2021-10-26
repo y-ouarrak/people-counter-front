@@ -38,6 +38,7 @@ import './assets/scss/app.scss';
 
 // config for firebase
 import config from './config.json';
+import Vuelidate from "vuelidate";
 
 
 Icon.Default.mergeOptions({
@@ -46,6 +47,7 @@ Icon.Default.mergeOptions({
 });
 
 Vue.use(VueFeather);
+Vue.use(Vuelidate);
 
 Vue.use(Toasted,{
   iconPack: 'fontawesome'

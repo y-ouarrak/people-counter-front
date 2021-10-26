@@ -227,8 +227,8 @@
   </div>
 </template>
 <script>
-  var primary = localStorage.getItem("primary_color") || "#7366ff";
-  var secondary = localStorage.getItem("secondary_color") || "#f73164";
+  var primary = localStorage.getItem('primary_color') || '#7366ff';
+  var secondary = localStorage.getItem('secondary_color') || '#f73164';
 
   // var Knob = require('knob');
   // var ordervalue = Knob({
@@ -277,12 +277,12 @@
 
         series: [
           {
-            name: "Entry",
+            name: 'Entry',
             data: [6, 20, 15, 40, 18, 20, 18, 23, 18, 35, 30, 55, 0],
             // data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
           },
           {
-            name: "Exit",
+            name: 'Exit',
             data: [2, 22, 35, 32, 40, 25, 50, 38, 42, 28, 20, 45, 0],
             // data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
           },
@@ -316,7 +316,7 @@
             chart: {
               width: 685,
               height: 240,
-              type: "area",
+              type: 'area',
               toolbar: {
                 show: false,
               },
@@ -326,10 +326,10 @@
               enabled: false,
             },
             stroke: {
-              curve: "smooth",
+              curve: 'smooth',
             },
             xaxis: {
-              type: "category",
+              type: 'category',
               low: 0,
               offsetX: 0,
               offsetY: 0,
@@ -364,14 +364,14 @@
             },
             markers: {
               strokeWidth: 3,
-              colors: "#ffffff",
+              colors: '#ffffff',
               strokeColors: [primary, secondary],
               hover: {
                 size: 6,
               },
             },
             fill: {
-              type: "gradient",
+              type: 'gradient',
               gradient: {
                 shadeIntensity: 1,
                 opacityFrom: 0.7,
@@ -384,7 +384,7 @@
             },
             tooltip: {
               x: {
-                format: "MM",
+                format: 'MM',
               },
             },
             grid: {
@@ -399,11 +399,11 @@
           },
           series: [
             {
-              name: "Entry",
+              name: 'Entry',
               data: [],
             },
             {
-              name: "Exit",
+              name: 'Exit',
               data: [],
             },
           ],
@@ -458,8 +458,10 @@
         this.show = false;
         try{
           const { data } = await API.get('/events', { params: { startDate: start, endDate: nowTime , perPage: 10000000 } });
-          const inArray = data.docs.map((elm) => elm.in);
-          const outArray = data.docs.map((elm) => elm.out);
+          let inArray = [];
+          let outArray = [];
+          inArray = data.docs.map((elm) => elm.in);
+          outArray = data.docs.map((elm) => elm.out);
           const timeArray = data.docs.map((elm) => `${elm.date} ${elm.hour}:00:00`);
 
           this.apexDashboard.series[0] = { name: 'In', data: inArray };
@@ -470,6 +472,7 @@
           this.totalOut = outArray.reduce(red);
           this.show = true;
         }catch(e){
+          // eslint-disable-next-line no-console
           console.log(e);
         }
 
@@ -489,12 +492,13 @@
           this.week = week;
           this.hour = hour;
         }catch(e){
+          // eslint-disable-next-line no-console
           console.log(e);
         }
       },
       addZero(i) {
         if (i < 10) {
-          i = "0" + i;
+          i = '0' + i;
         }
         return i;
       },

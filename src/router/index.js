@@ -1606,7 +1606,7 @@ const routes = [
 		}
 	},
 	{
-		path: '/authentication/forgetpassword',
+		path: '/auth/forgetpassword',
 		name: 'ForgetPassword',
 		component: ForgetPassword,
 		meta: {
@@ -1614,7 +1614,7 @@ const routes = [
 		}
 	},
 	{
-		path: '/authentication/resetpassword',
+		path: '/auth/resetpassword',
 		name: 'ResetPassword',
 		component: ResetPassword,
 		meta: {
@@ -1637,7 +1637,7 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
 	if (to.meta.title) document.title = to.meta.title;
 	const CurrentUser = localStorage.getItem('user');
-	const path = ['/auth/login', '/auth/register'];
+	const path = ['/auth/login', '/auth/register', '/auth/forgetpassword', '/auth/resetpassword'];
 	if (path.includes(to.path) || to.path === '/callback' || CurrentUser) {
 		return next();
 	} else next('/auth/login');
