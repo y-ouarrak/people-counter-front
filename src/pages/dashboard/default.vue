@@ -48,11 +48,15 @@
                   <div class="row">
                     <div class="col-12">
                       <h6><i class="fa fa-sign-in in"></i>&nbsp; Entry</h6>
-                      <h5 class="mb-0 counter ">{{hour.in}}</h5>
+                      <h5 class="mb-0 counter " v-if="hour.in">{{hour.in}}</h5>
+                      <h5 class="mb-0 counter " v-else>0</h5>
+
                     </div>
                     <div class="col-12 text-right">
                       <h6><i class="fa fa-sign-out out"></i>&nbsp; Exit </h6>
-                  <h5 class="mb-0 counter">{{hour.out}}</h5>
+                  <h5 class="mb-0 counter" v-if="hour.out">{{hour.out}}</h5>
+                  <h5 class="mb-0 counter" v-else>0</h5>
+
                     </div>
                   </div>
                 </div>
@@ -462,7 +466,7 @@
           let outArray = [];
           inArray = data.docs.map((elm) => elm.in);
           outArray = data.docs.map((elm) => elm.out);
-          const timeArray = data.docs.map((elm) => `${elm.date} ${elm.hour}:00:00`);
+          const timeArray = data.docs.map((elm) => `${new Date(elm.time).toLocaleString()}`);
 
           this.apexDashboard.series[0] = { name: 'In', data: inArray };
           this.apexDashboard.series[1] = { name: 'Out', data: outArray };

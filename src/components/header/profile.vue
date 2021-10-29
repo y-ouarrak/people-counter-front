@@ -7,9 +7,9 @@
         alt=""
       />
       <div class="media-body">
-        <span>Emay Walter</span>
+        <span>{{firstName}} {{lastName}}</span>
         <p class="mb-0 font-roboto">
-          Admin <i class="middle fa fa-angle-down"></i>
+          {{role}} <i class="middle fa fa-angle-down"></i>
         </p>
       </div>
     </div>
@@ -17,14 +17,14 @@
       <li>
         <a href="#"><feather type="user"></feather><span>Account </span></a>
       </li>
-      <li>
+      <!-- <li>
         <a href="#"><feather type="mail"></feather><span>Inbox</span></a>
       </li>
       <li>
         <a href="#"
           ><feather type="file-text"></feather><span>Taskboard</span></a
         >
-      </li>
+      </li> -->
       <li>
         <a href="#"><feather type="settings"></feather><span>Settings</span></a>
       </li>
@@ -43,6 +43,20 @@
 
   export default {
     name: 'Profile',
+    data() {
+      return {
+        firstName: '',
+        lastName: '',
+        role: ''
+      };
+    },
+    created() {
+      const user = JSON.parse(localStorage.getItem('user'));
+      this.firstName = user.user.firstName;
+      this.lastName = user.user.lastName;
+      this.role = user.user.role;
+      console.log(user);
+    },
     methods: {
       logout: function() {
         firebase
@@ -52,7 +66,7 @@
             UserAuth.Logout();
             this.$router.replace('/auth/login');
           });
-      },
-    },
+      }
+    }
   };
 </script>
